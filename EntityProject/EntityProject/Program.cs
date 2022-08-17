@@ -1,4 +1,6 @@
 using EntityProject.DAL;
+using EntityProject.DAL.Repositories;
+using EntityProject.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +14,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<EntitiesContext>();
 
-
+builder.Services.AddScoped<IEntityRepository, EntityRepository>();
+builder.Services.AddScoped<IEntityService, EntityService>();
 
 var app = builder.Build();
 
